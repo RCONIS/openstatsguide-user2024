@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "index.html#the-success-of-r",
+    "href": "index.html#the-success-of-r",
+    "title": "openstatsguide",
+    "section": "The success of R",
+    "text": "The success of R\n\n\n\n\nIs mainly due to its ease of creating and sharing R packages\nThe Comprehensive R Archive Network (CRAN) has been a huge success enabling this\nIncreasingly GitHub becomes another more light weight way to share R packages\n\n\n\n\n\n\nStack overflow questions for R"
+  },
+  {
+    "objectID": "index.html#how-can-we-guide-developers",
+    "href": "index.html#how-can-we-guide-developers",
+    "title": "openstatsguide",
+    "section": "How can we guide developers?",
+    "text": "How can we guide developers?\n\n\nCourses\nLectures\nWorkshops\nBooks\nPeer Review"
+  },
+  {
+    "objectID": "index.html#openstatsware-objectives",
+    "href": "index.html#openstatsware-objectives",
+    "title": "openstatsguide",
+    "section": "openstatsware objectives",
+    "text": "openstatsware objectives\nopenstatsware is a scientific working group of the American Statistical Association (ASA) Biopharmaceutical section (BIOP) and European Federation of Statisticians in the Pharmaceutical Industry (EFSPI).\n\nOur goals are to:\n\nEngineer selected R-packages to fill in gaps in the open-source statistical software landscape, and to promote software tools designed by the working group through publications, conference presentations, workshops, and training courses.\nDevelop good SWE practices for engineering high-quality statistical software and promote their use in the broader Biostatistics community via public training materials.\nCommunicate and collaborate with other R software initiatives including via the R Consortium."
+  },
+  {
+    "objectID": "index.html#today-openstatsguide",
+    "href": "index.html#today-openstatsguide",
+    "title": "openstatsguide",
+    "section": "Today: openstatsguide",
+    "text": "Today: openstatsguide\n\n\nSmall and concise set of recommendations for package developers\nOpinionated, but aims to be based on experienced majority opinions\nFocus are developers, while users might find complementary “validation” frameworks valuable\nPrimarily for statistical packages (not plotting, data wrangling, etc.)\nGeneric principles which can be used across functional data science languages R, Python, and Julia\nConcrete tools are mentioned as examples"
+  },
+  {
+    "objectID": "index.html#easy-to-remember",
+    "href": "index.html#easy-to-remember",
+    "title": "openstatsguide",
+    "section": "Easy to remember",
+    "text": "Easy to remember\n\n“Documentation, Vignettes, Tests, Functions, Style, Life cycle”\n\nThese keywords can be easily remembered with the mnemonic bridge sentence:\n\n“Developers Value Tests For Software Longevity”"
+  },
+  {
+    "objectID": "index.html#documentation",
+    "href": "index.html#documentation",
+    "title": "openstatsguide",
+    "section": "Documentation",
+    "text": "Documentation\n\nDocumentation is important for both users and developers to understand all objects in your package, without reading and interpreting the underlying source code.\n\nUse in-line comments next to functions, classes and other objects to generate their corresponding documentation.\nDo also document internal functions and classes for maintenance by future developers.\nAdd code comments for ambiguous or complex pieces of internal code, but only after optimizing the code design as much as possible."
+  },
+  {
+    "objectID": "index.html#vignettes",
+    "href": "index.html#vignettes",
+    "title": "openstatsguide",
+    "section": "Vignettes",
+    "text": "Vignettes\n\nVignettes are documents that complement the object documentation by providing a comprehensive and long-form overview of your package’s functionality from a user point of view, with particular emphasis on the connection to the statistical approaches.\n\nProvide an introduction vignette that introduces the package to new users, such that they have an easy entry point for getting started. Make sure to include code examples and automatically compile the vignette to ensure reproducibility.\nInclude deep dive vignettes that go into depth on specific use cases, functionalities or underlying theory, in particular describing the underlying statistical methodology and how it is implemented in the package.\nHost your vignettes on a dedicated website, which allows users to read the vignettes without installing the package, and simplifies citing the vignettes in other publications."
+  },
+  {
+    "objectID": "index.html#tests",
+    "href": "index.html#tests",
+    "title": "openstatsguide",
+    "section": "Tests",
+    "text": "Tests\n\nTests are a fundamental safety net and development tool to ensure that your package works as expected, both during development as well as on user systems.\n\nWrite unit tests for all functions and classes in your package, to ensure that all building blocks work correctly on their own (“white box” testing). Expect to rewrite tests for internal code when you refactor it.\nWrite functional tests for all user facing functionality (“black box” testing). These tests ensure that the user API is stable when refactoring internal code.\nIn addition, ensure a good coverage of your code with your tests as a final check, but only after having unit and functional tests on all levels of the code."
+  },
+  {
+    "objectID": "index.html#functions",
+    "href": "index.html#functions",
+    "title": "openstatsguide",
+    "section": "Functions",
+    "text": "Functions\n\nFunction definitions should be short, simple and enforce argument types with assertions.\n\nWrite short functions with less than 50 lines of code for a single and well-defined purpose, with few arguments, and low cyclomatic complexity, in order to reduce the risk of bugs, simplify writing tests and ensure that you can maintain them.\nUse type hints or types to explain to the user which argument of the function expects which type of input.\nEnforce types and other expected properties of function arguments with assertions, which give an early and readable error message to the user instead of failing function code downstream in a less explicable way."
+  },
+  {
+    "objectID": "index.html#style",
+    "href": "index.html#style",
+    "title": "openstatsguide",
+    "section": "Style",
+    "text": "Style\n\nA consistent and readable code style that is language idiomatic should be used and enforced by style checks.\n\nUse language idiomatic code and follow the “clean code” rules (use descriptive and meaningful names, prefer simpler over more complex code, avoid duplication of code, regularly refactor code), while allowing for exceptions only where needed.\nUse a formatting tool to automatically implement a consistent and readable code format.\nUse a style checking tool to enforce a consistent and readable code style."
+  },
+  {
+    "objectID": "index.html#life-cycle",
+    "href": "index.html#life-cycle",
+    "title": "openstatsguide",
+    "section": "Life cycle",
+    "text": "Life cycle\n\nLife cycle management is simplified by reducing dependencies, and should comprise a central code repository.\n\nReduce dependencies to simplify maintenance of your own package. Only depend on other packages that you trust and deem stable enough for the purpose, in order to avoid reinventing the wheel.\nGive clear information to users about changes in the package API via maintaining the change log and first deprecating functionality before removing it.\nUse a central repository for version control, collecting and resolving issues, and managing releases. Include the publication of a contributing guide to help onboard new developers and enable community contributions."
+  },
+  {
+    "objectID": "index.html#repeat-so-we-can-remember",
+    "href": "index.html#repeat-so-we-can-remember",
+    "title": "openstatsguide",
+    "section": "Repeat so we can remember",
+    "text": "Repeat so we can remember\n\n“Documentation, Vignettes, Tests, Functions, Style, Life cycle”\n\nThese keywords can be easily remembered with the mnemonic bridge sentence:\n\n“Developers Value Tests For Software Longevity”"
+  },
+  {
+    "objectID": "index.html#maintenance",
+    "href": "index.html#maintenance",
+    "title": "openstatsguide",
+    "section": "Maintenance",
+    "text": "Maintenance\n\n\nopenstatsguide will be maintained by openstatsware.org\nWe are considering a regular review (e.g. every 6-12 months)\nWe will modify recommendations as good practices change and new tools become available"
+  },
+  {
+    "objectID": "index.html#to-do",
+    "href": "index.html#to-do",
+    "title": "openstatsguide",
+    "section": "To do",
+    "text": "To do\n\n\nAdd a feature of switching between versions of the openstatsguide\nMake it easy to cite openstatsguide\nCould further optimize the way the tool examples are shown\nSeparate Shiny app development guide"
+  },
+  {
+    "objectID": "index.html#is-it-useful-what-is-missing-what-is-not-needed",
+    "href": "index.html#is-it-useful-what-is-missing-what-is-not-needed",
+    "title": "openstatsguide",
+    "section": "Is it useful? What is missing? What is not needed?",
+    "text": "Is it useful? What is missing? What is not needed?\nThese slides are at\nrconis.github.io/openstatsguide-user2024\nopenstatsguide is at openstatsware.org/guide.html\nDiscuss with me: linkedin.com/in/danielsabanesbove\n\n\n\n\nopenstatsguide | License"
+  }
+]

@@ -1,0 +1,8 @@
+h1.title {
+    background-image: 
+      url(openstatsware.png), 
+      url(user2024logo.png);
+    background-repeat: no-repeat;
+    background-position: left, right;
+    background-size: 100px, 100px;
+}
