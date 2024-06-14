@@ -1,0 +1,220 @@
+---
+title: "openstatsguide"
+subtitle: "Minimum Viable Good Practices for High Quality Statistical Software Packages"
+author: "Daniel Sabanés Bové (RCONIS)"
+institute: "On behalf of openstatsware.org"
+date: "2024-06-16"
+date-format: long
+license: 'CC BY-SA'
+logo: https://github.com/openstatsware/website/raw/main/sticker/openstatsware-hex.svg
+format: 
+  revealjs:
+    fontsize: 2rem
+    slide-number: c/t
+    toc: true
+    toc-depth: 1
+    footer: 'openstatsguide | [License](http://creativecommons.org/licenses/by-sa/4.0/ "License: CC BY-SA 4.0")'
+css: style.css
+preload-iframes: true
+---
+
+# Introduction
+
+## The success of R
+
+::: {.columns}
+::: {.column}
+::: {.incremental}
+
+- Is mainly due to its ease of creating and sharing R packages
+- The Comprehensive R Archive Network (CRAN) has been a huge success enabling this
+- Increasingly GitHub becomes another more light weight way to share R packages
+
+:::
+:::
+::: {.column}
+![Stack overflow questions for R](r-popularity.webp)
+:::
+:::
+
+## How can we guide developers?
+
+::: {.incremental}
+
+- Courses
+- Lectures
+- Workshops
+- Books
+- Peer Review 
+
+:::
+
+## openstatsware objectives
+
+`openstatsware` is a scientific working group of the [American Statistical Association (ASA) Biopharmaceutical section (BIOP)](https://community.amstat.org/biop/home) and [European Federation of Statisticians in the Pharmaceutical Industry (EFSPI)](https://www.efspi.org/).
+
+::: {.incremental}
+
+Our goals are to:
+
+-   **Engineer selected R-packages** to fill in gaps in the open-source statistical software landscape, and to promote software tools designed by the working group through publications, conference presentations, workshops, and training courses.
+
+-   **Develop good SWE practices** for engineering high-quality statistical software and promote their use in the broader Biostatistics community via public training materials.
+
+-   **Communicate and collaborate** with other R software initiatives including via the [R Consortium](https://www.r-consortium.org/). 
+
+:::
+
+## Today: openstatsguide
+
+::: {.incremental}
+
+- Small and concise set of recommendations for package developers
+- Opinionated, but aims to be based on experienced majority opinions
+- Focus are developers, while users might find complementary "validation" frameworks valuable
+- Primarily for statistical packages (not plotting, data wrangling, etc.)
+- Generic principles which can be used across functional data science languages R, Python, and Julia
+- Concrete tools are mentioned as examples 
+
+:::
+
+# openstatsguide
+
+## {background-iframe="https://openstatsware.org/guide.html"}
+
+## Easy to remember
+
+> "**D**ocumentation, **V**ignettes, **T**ests, **F**unctions, **S**tyle, **L**ife cycle"
+
+These keywords can be easily remembered with the mnemonic bridge sentence:
+
+> "**D**evelopers **V**alue **T**ests **F**or **S**oftware **L**ongevity"
+
+## Documentation
+
+::: {.incremental}
+
+Documentation is important for both users and developers to understand all objects in your package, without reading and interpreting the underlying source code.
+
+1.  Use **in-line comments** next to functions, classes and other objects to generate their corresponding documentation.
+
+2.  Do also **document internal functions** and classes for maintenance by future developers.
+
+3.  Add **code comments** for ambiguous or complex pieces of internal code, but only after optimizing the code design as much as possible.
+
+:::
+
+## Vignettes
+
+::: {.incremental}
+
+Vignettes are documents that complement the object documentation by providing a comprehensive and long-form overview of your package's functionality from a user point of view, with particular emphasis on the connection to the statistical approaches.
+
+1.  Provide an **introduction vignette** that introduces the package to new users, such that they have an easy entry point for getting started. Make sure to include code examples and automatically compile the vignette to ensure reproducibility.
+
+2.  Include **deep dive vignettes** that go into depth on specific use cases, functionalities or underlying theory, in particular describing the underlying statistical methodology and how it is implemented in the package.
+
+3.  Host your vignettes on a **dedicated website**, which allows users to read the vignettes without installing the package, and simplifies citing the vignettes in other publications.
+
+:::
+
+## Tests
+
+::: {.incremental}
+
+Tests are a fundamental safety net and development tool to ensure that your package works as expected, both during development as well as on user systems.
+
+1.  Write **unit tests** for all functions and classes in your package, to ensure that all building blocks work correctly on their own ("white box" testing). Expect to rewrite tests for internal code when you refactor it.
+
+2.  Write **functional tests** for all user facing functionality ("black box" testing). These tests ensure that the user API is stable when refactoring internal code.
+
+3.  In addition, ensure a **good coverage** of your code with your tests as a final check, but only after having unit and functional tests on all levels of the code.
+
+:::
+
+## Functions
+
+::: {.incremental}
+
+Function definitions should be short, simple and enforce argument types with assertions.
+
+1.  Write **short functions** with less than 50 lines of code for a single and well-defined purpose, with **few arguments**, and low cyclomatic complexity, in order to reduce the risk of bugs, simplify writing tests and ensure that you can maintain them.
+
+2.  Use **type hints** or types to explain to the user which argument of the function expects which type of input.
+
+3.  Enforce types and other expected properties of function arguments with **assertions**, which give an early and readable error message to the user instead of failing function code downstream in a less explicable way.
+
+:::
+
+## Style
+
+::: {.incremental}
+
+A consistent and readable code style that is language idiomatic should be used and enforced by style checks.
+
+1.  Use **language idiomatic** code and follow the **"clean code" rules** (use descriptive and meaningful names, prefer simpler over more complex code, avoid duplication of code, regularly refactor code), while allowing for exceptions only where needed.
+
+2.  Use a **formatting tool** to automatically implement a consistent and readable code format.
+
+3.  Use a **style checking** tool to enforce a consistent and readable code style.
+
+:::
+
+## Life cycle
+
+::: {.incremental}
+
+Life cycle management is simplified by reducing dependencies, and should comprise a central code repository.
+
+1.  **Reduce dependencies** to simplify maintenance of your own package. Only depend on other packages that you trust and deem stable enough for the purpose, in order to avoid reinventing the wheel.
+
+2.  Give clear information to users about changes in the package API via maintaining the **change log** and first **deprecating functionality** before removing it.
+
+3.  Use a **central repository** for version control, collecting and resolving issues, and managing releases. Include the publication of a **contributing guide** to help onboard new developers and enable community contributions.
+
+:::
+
+## Repeat so we can remember
+
+> "**D**ocumentation, **V**ignettes, **T**ests, **F**unctions, **S**tyle, **L**ife cycle"
+
+These keywords can be easily remembered with the mnemonic bridge sentence:
+
+> "**D**evelopers **V**alue **T**ests **F**or **S**oftware **L**ongevity"
+
+# Outlook
+
+## Maintenance
+
+::: {.incremental}
+
+- openstatsguide will be maintained by openstatsware.org
+- We are considering a regular review (e.g. every 6-12 months)
+- We will modify recommendations as good practices change and new tools become available
+
+:::
+
+## To do
+
+::: {.incremental}
+
+- Add a feature of switching between versions of the openstatsguide
+- Make it easy to cite openstatsguide
+- Could further optimize the way the tool examples are shown
+- Separate Shiny app development guide
+
+:::
+
+# Your turn!
+
+## Is it useful? What is missing? What is not needed?
+
+These slides are at  
+[rconis.github.io/openstatsguide-user2024](https://rconis.github.io/openstatsguide-user2024/)
+
+openstatsguide is at [openstatsware.org/guide.html](https://openstatsware.org/guide.html)
+
+Discuss with me:
+[linkedin.com/in/danielsabanesbove](https://www.linkedin.com/in/danielsabanesbove/)
+
+
